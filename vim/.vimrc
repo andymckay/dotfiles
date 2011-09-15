@@ -136,5 +136,22 @@ function! GreenBar()
     echohl
 endfunction
 
-nnoremap <leader>a :call RunTests('', '')<cr>:redraw<cr>:call JumpToError()<cr>
-nnoremap <leader>y :call RunTestsForFile('--failfast')<cr>:redraw<cr>:call JumpToError()<cr>
+set nobackup
+set nowritebackup
+set noswapfile
+
+nnoremap <F11> :TlistToggle
+
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+
+
+autocmd FileType python :TlistToggle
+autocmd FileType ruby :TlistToggle
+autocmd FileType java :TlistToggle
+autocmd FileType javascript :TlistToggle
+autocmd FileType html :TlistToggle
+autocmd FileType css :TlistToggle
+autocmd FileType xml :TlistToggle
+autocmd FileType php :TlistToggle
+autocmd FileType c :TlistToggle

@@ -1,6 +1,6 @@
 [user]
-	name = Andy McKay
-	email = amckay@mozilla.com
+    name = Andy McKay
+    email = amckay@mozilla.com
 
 [color]
     diff = auto
@@ -29,28 +29,24 @@
 [core]
     pager = less -FRSX
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Users/andy/.gitignore
+    excludesfile = /Users/andy/.gitignore
 
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     co = checkout
     cp = cherry-pick
-    fixup = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-    squash = !sh -c 'git commit -a -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+    fx = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"'
     ri = rebase --interactive --autosquash master
     lgs = log --stat
-    #pull-request = /Users/andy/script/git-pull-request
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
-#[diff]
-#	external = /Users/andy/scripts/git-diff
 
 [push]
-	default = tracking
+    default = tracking

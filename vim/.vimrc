@@ -88,3 +88,51 @@ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType javascript setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4
+
+
+"Credit Damian Conway for the rest.
+nnoremap <SPACE> <PAGEDOWN>
+
+set undolevels=5000
+set virtualedit=block
+
+vnoremap <silent> I I<C-R>=TemporaryColumnMarkerOn()<CR>
+vnoremap <silent> A A<C-R>=TemporaryColumnMarkerOn()<CR>
+
+function! TemporaryColumnMarkerOn ()
+        set cursorcolumn
+        inoremap <silent> <ESC>
+        \ <ESC>:call TemporaryColumnMarkerOff()<CR>
+        return ""
+endfunction
+
+function! TemporaryColumnMarkerOff ()
+        set nocursorcolumn
+        iunmap <ESC>
+endfunction
+
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$")
+\| exe "normal! g`\""
+\| endif
+
+nmap S :%s//g<LEFT><LEFT>
+vmap S :s//g<LEFT><LEFT>
+
+set autoindent smartindent
+"No stupid outdent for scripting comments...
+inoremap # X<C-H>#
+"And no stupid shift-resistance either...
+nnoremap <silent> >> :call ShiftLine()<CR>
+function! ShiftLine()
+        set nosmartindent normal! >>
+        set smartindent
+endfunction
+
+nmap / /\v
+cmap s/ s/\v
+
+nmap <DEL> :nohlsearch<CR>
+
+let g:tagbar_usearrows = 1
+nnoremap <leader>l :TagbarToggle<CR>

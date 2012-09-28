@@ -1,9 +1,11 @@
 WHITE=$(tput setaf 7)
 GREEN=$(tput setaf 2)
+BLUE=$(tput setaf 4)
+PURPLE=$(tput setaf 5)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
-PS1='\[$BOLD\]\[$WHITE\]\w\[$GREEN\]$(__git_ps1 "(%s)")\[$RESET\] $ '
+PS1='\[$PURPLE\]$(__git_ps1 "[%s]") \[$GREEN\]\W\[$RESET\] $ '
 
 source $HOME/.git-completion.bash
 source $HOME/.virtualenvwrapper
@@ -14,15 +16,21 @@ alias c='check'
 alias e='mvim --remote-tab-silent'
 #alias e='mvim'
 alias ec='p /usr/local/bin/scapa.py check'
+alias jf='p ~/scripts/jenkins.py'
+alias jt='p /usr/local/bin/scapa.py jenkins test'
+alias je='p /usr/local/bin/scapa.py jenkins edit'
 alias o='open'
 alias g='git'
-alias h='curl -I'
-alias p='/usr/local/Cellar/python/2.7.2/bin/python'
+alias h='heroku'
+alias p='python'
+alias z='/usr/local/Cellar/python/2.7.2/bin/python'
+alias js='node'
 alias check='p ~/sandboxes/check/check.py'
 alias cover='coverage run ./manage.py test --logging-clear-handlers'
 alias t='python manage.py test --noinput -s --logging-clear-handlers --with-progressive $1'
-alias cb='git checkout master && git pull && git branch $1 && git checkout -b $1'
-alias rb='cd ~/sandboxes/zamboni; . ~/scripts/remove-branch $1'
+alias tl='python manage.py test --noinput -s --with-progressive $1'
+alias gcb='git checkout master && git pull && git branch $1 && git checkout -b $1'
+alias grb='cd ~/sandboxes/zamboni; . ~/scripts/remove-branch $1'
 alias gl='git branch -l'
 alias gd='git diff'
 alias gs='git checkout'
@@ -35,9 +43,10 @@ alias gu='python ~/scripts/github.url.py';
 alias gv='python ~/scripts/github.source.url.py';
 gp() { git push origin $(__git_ps1 "%s"); python ~/scripts/github.url.py; }
 gpf() { git push -f origin $(__git_ps1 "%s"); python ~/scripts/github.url.py; }
-ci() { git commit -a -m "$@ $(__git_ps1 "(bug %s)")"; }
+gci() { git commit -a -m "$@ $(__git_ps1 "(bug %s)")"; }
 gss() { python ~/scripts/git.patch.show.py $1; }
 gh() { open "https://github.com/andymckay/zamboni/commits/$(__git_ps1 "%s")"; }
+pup() { pip install -r requirements/compiled.txt -r requirements/dev.txt; }
 
 alias jslint='/usr/local/share/npm/bin/jslint'
 
@@ -47,8 +56,9 @@ export PYTHONSTARTUP=~/.pythonrc.py
 export EDITOR=vim
 export VISUAL=vim
 export $EDITOR=vim
-export DJANGO_SETTINGS_MODULE=settings
 export TM_PYCHECKER=pylint
 export WORKON_HOME=$HOME/.virtualenvs
-export PATH=/usr/local/sbin:/usr/local/Cellar/ctags/5.8/bin/:/usr/local/Cellar/python/2.7.2/bin:$PATH
+export PATH=/usr/local/bin/:/usr/local/b2g/:/usr/local/sbin:/usr/local/Cellar/ctags/5.8/bin/:/usr/local/Cellar/python/2.7.2/bin:$PATH
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PIP_DOWNLOAD_CACHE=~/.pip/download_cache
+export MYVIMRC=$HOME/.profile

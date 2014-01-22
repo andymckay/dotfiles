@@ -37,7 +37,6 @@
     cp = cherry-pick
     fx = !sh -c 'git commit -a -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"'
     ri = rebase --interactive --autosquash master
-    lgs = log --stat
 
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -50,3 +49,5 @@
 
 [push]
     default = tracking
+[init]
+	templatedir = ~/.git_template

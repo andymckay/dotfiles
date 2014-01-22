@@ -6,7 +6,7 @@ set number
 syntax on
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set smartindent
-"set tabstop=4
+set tabstop=4
 "set shiftwidth=4
 set expandtab
 "set softtabstop=4
@@ -80,15 +80,18 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+map <Esc><Esc> :w<CR>
+
 nnoremap <F11> :TlistToggle
 nnoremap ; :
 
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType javascript setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4
-
+" autoindent http://www.vim.org/scripts/script.php?script_id=1171
+" autocmd BufReadPost * :DetectIndent
 
 "Credit Damian Conway for the rest.
 nnoremap <SPACE> <PAGEDOWN>
@@ -110,6 +113,8 @@ function! TemporaryColumnMarkerOff ()
         set nocursorcolumn
         iunmap <ESC>
 endfunction
+
+
 
 autocmd BufReadPost *
 \ if line("'\"") > 1 && line("'\"") <= line("$")
@@ -136,3 +141,10 @@ nmap <DEL> :nohlsearch<CR>
 
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
+
+execute pathogen#infect()
+
+nnoremap <silent> <Leader>f :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+nnoremap <silent> <Leader>u :GundoToggle<CR>
+nnoremap <silent> <Leader>g :GitGutterNextHunk<CR>

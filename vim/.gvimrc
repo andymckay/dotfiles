@@ -11,4 +11,5 @@ set guifont=Source\ Code\ Pro:h14
 
 if has("gui_macvim")
     map <D-r> :CommandT<CR>
+    map <D-d> :Dash!<CR>
 endif

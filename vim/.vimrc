@@ -37,6 +37,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+set autoread
 
 let python_highlight_all=1
 set ignorecase
@@ -84,6 +85,8 @@ map <Esc><Esc> :w<CR>
 
 nnoremap <F11> :TlistToggle
 nnoremap ; :
+
+
 
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
@@ -144,7 +147,11 @@ nnoremap <leader>l :TagbarToggle<CR>
 
 execute pathogen#infect()
 
-nnoremap <silent> <Leader>f :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 nnoremap <silent> <Leader>u :GundoToggle<CR>
 nnoremap <silent> <Leader>g :GitGutterNextHunk<CR>
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+au BufRead,BufNewFile *.go set filetype=go
+set rtp+=$GOROOT/misc/vim
+"autocmd FileType go autocmd BufWritePre <buffer> Fmt

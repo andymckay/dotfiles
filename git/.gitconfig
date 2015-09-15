@@ -28,8 +28,9 @@
 
 [core]
     pager = less -FRSX
-    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     excludesfile = /Users/andy/.gitignore
+    precomposeunicode = false
 
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative

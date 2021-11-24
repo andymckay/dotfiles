@@ -1,2 +1,2 @@
 #!/bin/bash
-alias a="git grep"
+ln -s $(pwd)/aliases $HOME/.bash_aliases
